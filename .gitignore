@@ -1,0 +1,18 @@
+# Terraform local data
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+
+# Local Terraform executable
+terraform.exe
+
+# Local credentials and generated policy files
+.env
+.env.*
+policy.json
+
+# Operating system files
+.DS_Store
+Thumbs.db

@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Agenda de eventos tecnológicos para descubrir, aprender y conectar.">
+	<title>Nexo Tech | Eventos tecnológicos</title>
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+		:root {
+			--ink: #14231f;
+			--muted: #65736e;
+			--paper: #f5f3eb;
+			--lime: #d8f36d;
+			--coral: #ff765f;
+			--teal: #0b7568;
+			--line: rgba(20, 35, 31, .16);
+		}
+
+		* { box-sizing: border-box; }
+		html { scroll-behavior: smooth; }
+		body {
+			margin: 0;
+			color: var(--ink);
+			background: var(--paper);
+			font-family: 'Space Grotesk', sans-serif;
+		}
+		a { color: inherit; text-decoration: none; }
+		.shell { width: min(1160px, calc(100% - 40px)); margin: auto; }
+		.topbar {
+			display: flex; align-items: center; justify-content: space-between;
+			padding: 24px 0; border-bottom: 1px solid var(--line);
+		}
+		.brand { display: flex; gap: 10px; align-items: center; font-weight: 700; letter-spacing: -.04em; }
+		.brand-mark { width: 28px; height: 28px; background: var(--coral); transform: rotate(45deg); display: grid; place-items: center; }
+		.brand-mark::after { content: ''; width: 9px; height: 9px; border: 2px solid var(--ink); }
+		nav { display: flex; gap: 28px; font-size: .88rem; color: var(--muted); }
+		nav a:hover { color: var(--ink); }
+		.hero { padding: 88px 0 96px; display: grid; grid-template-columns: 1.35fr .65fr; gap: 70px; align-items: end; }
+		.eyebrow, .kicker { font: 500 .72rem 'DM Mono', monospace; text-transform: uppercase; letter-spacing: .12em; }
+		.eyebrow { color: var(--teal); margin-bottom: 22px; }
+		h1 { max-width: 780px; margin: 0; font-size: clamp(3.6rem, 8vw, 7.9rem); line-height: .88; letter-spacing: -.09em; font-weight: 600; }
+		.hero-copy { border-left: 2px solid var(--coral); padding-left: 22px; font-size: 1.05rem; line-height: 1.55; color: var(--muted); max-width: 290px; }
+		.hero-copy strong { display: block; color: var(--ink); font-size: 1.35rem; line-height: 1.1; margin-bottom: 16px; }
+		.ticker { background: var(--ink); color: var(--lime); overflow: hidden; white-space: nowrap; padding: 13px 0; font: 500 .72rem 'DM Mono', monospace; text-transform: uppercase; letter-spacing: .12em; }
+		.ticker span { display: inline-block; margin-right: 46px; }
+		.section-head { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid var(--line); padding: 72px 0 18px; }
+		h2 { margin: 0; font-size: clamp(2rem, 4vw, 3.8rem); letter-spacing: -.07em; line-height: 1; }
+		.section-note { color: var(--muted); font-size: .9rem; }
+		.events { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; padding: 22px 0 80px; }
+		.event { min-height: 330px; border: 1px solid var(--line); padding: 22px; display: flex; flex-direction: column; justify-content: space-between; transition: transform .2s ease, background .2s ease; }
+		.event:hover { transform: translateY(-6px); background: #fffdf6; }
+		.event:nth-child(2) { background: var(--lime); border-color: var(--lime); }
+		.event:nth-child(2):hover { background: #e4fa8d; }
+		.event-date { display: flex; justify-content: space-between; font: 500 .72rem 'DM Mono', monospace; text-transform: uppercase; }
+		.event h3 { font-size: 1.85rem; line-height: .98; letter-spacing: -.06em; margin: 20px 0 12px; }
+		.event p { color: var(--muted); line-height: 1.45; font-size: .9rem; margin: 0; }
+		.event:nth-child(2) p { color: #43512a; }
+		.event-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 28px; font-size: .78rem; }
+		.tag { border: 1px solid currentColor; border-radius: 20px; padding: 6px 10px; }
+		.arrow { font-size: 1.35rem; }
+		.manifesto { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; padding: 10px 0 100px; }
+		.manifesto p { margin: 0; font-size: clamp(1.7rem, 3vw, 3rem); line-height: 1.02; letter-spacing: -.06em; }
+		.manifesto p em { color: var(--coral); font-style: normal; }
+		.details { color: var(--muted); line-height: 1.6; max-width: 370px; }
+		.details strong { color: var(--ink); display: block; font-size: 1.1rem; margin-bottom: 10px; }
+		footer { background: var(--teal); color: #e8f1d7; padding: 32px 0; }
+		.footer-inner { display: flex; justify-content: space-between; gap: 20px; align-items: center; }
+		.footer-inner p { margin: 0; font-size: .85rem; }
+		.footer-inner a { border-bottom: 1px solid currentColor; font: 500 .72rem 'DM Mono', monospace; text-transform: uppercase; }
+		@media (max-width: 760px) {
+			.shell { width: min(100% - 28px, 580px); }
+			nav { display: none; }
+			.topbar { padding: 18px 0; }
+			.hero { padding: 66px 0 70px; grid-template-columns: 1fr; gap: 42px; }
+			h1 { font-size: clamp(3.8rem, 18vw, 6.4rem); }
+			.hero-copy { max-width: 100%; }
+			.section-head { padding-top: 55px; display: block; }
+			.section-note { display: block; margin-top: 12px; }
+			.events, .manifesto { grid-template-columns: 1fr; }
+			.events { padding-bottom: 60px; }
+			.event { min-height: 280px; }
+			.manifesto { gap: 30px; padding-bottom: 70px; }
+			.footer-inner { align-items: flex-start; flex-direction: column; }
+		}
+	</style>
+</head>
+<body>
+	<header class="shell topbar">
+		<a class="brand" href="#inicio" aria-label="Nexo Tech, inicio"><span class="brand-mark"></span>NEXO TECH</a>
+		<nav aria-label="Navegación principal"><a href="#agenda">Agenda</a><a href="#idea">La idea</a><a href="#contacto">Contacto</a></nav>
+	</header>
+
+	<main id="inicio">
+		<section class="shell hero">
+			<div><div class="eyebrow">Comunidad · conocimiento · futuro</div><h1>La tecnología también se vive.</h1></div>
+			<div class="hero-copy"><strong>Encuentra tu próximo punto de conexión.</strong>Charlas, laboratorios y encuentros para quienes están construyendo lo que viene.</div>
+		</section>
+		<div class="ticker" aria-hidden="true"><span>Ideas que conectan</span><span>Personas que crean</span><span>Futuro en movimiento</span><span>Ideas que conectan</span></div>
+
+		<section class="shell" id="agenda">
+			<div class="section-head"><h2>Próximos eventos</h2><span class="section-note">03 encuentros · primavera 2026</span></div>
+			<div class="events">
+				<article class="event"><div><div class="event-date"><span>12 ABR</span><span>01</span></div><h3>IA útil, no humo.</h3><p>Una conversación directa sobre cómo aplicar inteligencia artificial para resolver problemas reales.</p></div><div class="event-footer"><span class="tag">Madrid · 19:00</span><span class="arrow">↗</span></div></article>
+				<article class="event"><div><div class="event-date"><span>26 ABR</span><span>02</span></div><h3>Diseñar con datos.</h3><p>Del número a la decisión: taller práctico para convertir información en mejores productos.</p></div><div class="event-footer"><span class="tag">Online · 17:30</span><span class="arrow">↗</span></div></article>
+				<article class="event"><div><div class="event-date"><span>09 MAY</span><span>03</span></div><h3>Hack the ordinary.</h3><p>Un encuentro para prototipar ideas audaces junto a una comunidad curiosa y abierta.</p></div><div class="event-footer"><span class="tag">Barcelona · 10:00</span><span class="arrow">↗</span></div></article>
+			</div>
+		</section>
+
+		<section class="shell manifesto" id="idea"><p>No venimos a hablar del futuro. Venimos a <em>hacerle preguntas.</em></p><div class="details"><strong>Un espacio para aprender sin postureo.</strong>Nexo Tech reúne a estudiantes, profesionales y personas inquietas alrededor de las conversaciones que importan: tecnología responsable, creatividad y las herramientas que están cambiando nuestra forma de trabajar.</div></section>
+	</main>
+
+	<footer id="contacto"><div class="shell footer-inner"><p>© 2026 Nexo Tech · Eventos tecnológicos</p><a href="mailto:hola@nexotech.example">Escríbenos ↗</a></div></footer>
+</body>
+</html>
