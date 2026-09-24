@@ -17,7 +17,7 @@ BUCKET=$(./terraform.exe output -raw bucket_name)
 ENDPOINT=$(./terraform.exe output -raw website_endpoint)
 
 echo "Bucket: $BUCKET"
-echo "http://$ENDPOINT" | tee URL.txt
+echo "http://$ENDPOINT" | tee web.txt
 
 aws s3 ls "s3://$BUCKET/"
 curl -I "http://$ENDPOINT"

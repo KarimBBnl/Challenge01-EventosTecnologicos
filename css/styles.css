@@ -2,13 +2,21 @@
   --shadow: 0 18px 50px rgba(20, 35, 31, .10);
 }
 
+ :focus-visible { outline: 3px solid var(--coral); outline-offset: 4px; }
 body { overflow-x: hidden; }
 button, input { font: inherit; }
 button { cursor: pointer; }
+.skip-link { position: fixed; top: 12px; left: 12px; z-index: 20; padding: 10px 14px; background: var(--lime); transform: translateY(-150%); transition: transform .2s ease; }
+.skip-link:focus { transform: translateY(0); }
 .topbar { position: relative; z-index: 2; }
 .topbar nav a { transition: color .2s ease; }
 .hero { position: relative; }
 .hero::after { content: ''; position: absolute; width: 150px; height: 150px; border: 1px solid var(--coral); border-radius: 50%; right: 9%; top: 38px; opacity: .45; animation: drift 8s ease-in-out infinite; }
+.hero-actions { display: flex; align-items: center; gap: 24px; margin-top: 32px; }
+.primary-action { display: inline-flex; align-items: center; gap: 16px; padding: 13px 16px; background: var(--coral); font-size: .82rem; font-weight: 600; transition: transform .2s ease, background .2s ease; }
+.primary-action:hover { transform: translateY(-3px); background: #ff8a76; }
+.primary-action span { font-size: 1.2rem; }
+.text-action { color: var(--muted); border-bottom: 1px solid currentColor; font-size: .82rem; }
 .kicker { color: var(--teal); margin-bottom: 12px; }
 .agenda-tools { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 24px 0 4px; }
 .filters { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -50,6 +58,7 @@ button { cursor: pointer; }
 @keyframes reveal { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 @media (max-width: 760px) {
   .hero::after { width: 90px; height: 90px; right: -5%; top: 25px; }
+  .hero-actions { align-items: flex-start; flex-direction: column; gap: 18px; }
   .agenda-tools { align-items: flex-start; flex-direction: column; }
   .search { width: 100%; }
   .search input { width: 100%; }
