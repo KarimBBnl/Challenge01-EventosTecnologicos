@@ -85,11 +85,12 @@
 			.footer-inner { align-items: flex-start; flex-direction: column; }
 		}
 	</style>
+	<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 	<header class="shell topbar">
 		<a class="brand" href="#inicio" aria-label="Nexo Tech, inicio"><span class="brand-mark"></span>NEXO TECH</a>
-		<nav aria-label="Navegación principal"><a href="#agenda">Agenda</a><a href="#idea">La idea</a><a href="#contacto">Contacto</a></nav>
+		<nav aria-label="Navegación principal"><a href="#agenda">Agenda</a><a href="#idea">La idea</a><a href="#comunidad">Comunidad</a><a href="#contacto">Contacto</a></nav>
 	</header>
 
 	<main id="inicio">
@@ -100,17 +101,31 @@
 		<div class="ticker" aria-hidden="true"><span>Ideas que conectan</span><span>Personas que crean</span><span>Futuro en movimiento</span><span>Ideas que conectan</span></div>
 
 		<section class="shell" id="agenda">
-			<div class="section-head"><h2>Próximos eventos</h2><span class="section-note">03 encuentros · primavera 2026</span></div>
-			<div class="events">
-				<article class="event"><div><div class="event-date"><span>12 ABR</span><span>01</span></div><h3>IA útil, no humo.</h3><p>Una conversación directa sobre cómo aplicar inteligencia artificial para resolver problemas reales.</p></div><div class="event-footer"><span class="tag">Madrid · 19:00</span><span class="arrow">↗</span></div></article>
-				<article class="event"><div><div class="event-date"><span>26 ABR</span><span>02</span></div><h3>Diseñar con datos.</h3><p>Del número a la decisión: taller práctico para convertir información en mejores productos.</p></div><div class="event-footer"><span class="tag">Online · 17:30</span><span class="arrow">↗</span></div></article>
-				<article class="event"><div><div class="event-date"><span>09 MAY</span><span>03</span></div><h3>Hack the ordinary.</h3><p>Un encuentro para prototipar ideas audaces junto a una comunidad curiosa y abierta.</p></div><div class="event-footer"><span class="tag">Barcelona · 10:00</span><span class="arrow">↗</span></div></article>
+			<div class="section-head"><div><div class="kicker">Agenda abierta</div><h2>Próximos eventos</h2></div><span class="section-note">03 encuentros · primavera 2026</span></div>
+			<div class="agenda-tools" aria-label="Filtrar eventos">
+				<div class="filters"><button class="filter is-active" type="button" data-filter="all">Todos</button><button class="filter" type="button" data-filter="presencial">Presencial</button><button class="filter" type="button" data-filter="online">Online</button><button class="filter" type="button" data-filter="taller">Taller</button></div>
+				<label class="search"><span>Buscar</span><input type="search" id="event-search" placeholder="IA, datos..." aria-label="Buscar eventos"></label>
 			</div>
+			<div class="events">
+				<article class="event" data-category="presencial" data-title="IA útil no humo"><div><div class="event-date"><span>12 ABR</span><span>01</span></div><h3>IA útil, no humo.</h3><p>Una conversación directa sobre cómo aplicar inteligencia artificial para resolver problemas reales.</p></div><div class="event-footer"><span class="tag">Madrid · 19:00</span><button class="event-link" type="button" data-event="ia">Ver detalles ↗</button></div></article>
+				<article class="event" data-category="online taller" data-title="Diseñar con datos"><div><div class="event-date"><span>26 ABR</span><span>02</span></div><h3>Diseñar con datos.</h3><p>Del número a la decisión: taller práctico para convertir información en mejores productos.</p></div><div class="event-footer"><span class="tag">Online · 17:30</span><button class="event-link" type="button" data-event="datos">Ver detalles ↗</button></div></article>
+				<article class="event" data-category="presencial taller" data-title="Hack the ordinary"><div><div class="event-date"><span>09 MAY</span><span>03</span></div><h3>Hack the ordinary.</h3><p>Un encuentro para prototipar ideas audaces junto a una comunidad curiosa y abierta.</p></div><div class="event-footer"><span class="tag">Barcelona · 10:00</span><button class="event-link" type="button" data-event="hack">Ver detalles ↗</button></div></article>
+			</div>
+			<p class="empty-state" hidden>No encontramos eventos con esa búsqueda. Prueba otra palabra.</p>
 		</section>
 
 		<section class="shell manifesto" id="idea"><p>No venimos a hablar del futuro. Venimos a <em>hacerle preguntas.</em></p><div class="details"><strong>Un espacio para aprender sin postureo.</strong>Nexo Tech reúne a estudiantes, profesionales y personas inquietas alrededor de las conversaciones que importan: tecnología responsable, creatividad y las herramientas que están cambiando nuestra forma de trabajar.</div></section>
+
+		<section class="shell community" id="comunidad">
+			<div class="section-head"><div><div class="kicker">Nexo en números</div><h2>Más que una agenda.</h2></div><span class="section-note">Una comunidad en movimiento</span></div>
+			<div class="stats"><div><strong>1.240</strong><span>personas conectadas</span></div><div><strong>28</strong><span>encuentros celebrados</span></div><div><strong>14</strong><span>ciudades participantes</span></div></div>
+		</section>
+
+		<section class="shell join" id="participa"><div><div class="kicker">Recibe la señal</div><h2>Una idea al mes.<br><em>Cero spam.</em></h2></div><form id="join-form"><label for="email">Tu email profesional</label><div class="form-row"><input id="email" name="email" type="email" placeholder="tu@email.com" required><button type="submit">Quiero estar dentro ↗</button></div><p class="form-message" role="status" aria-live="polite"></p></form></section>
 	</main>
 
-	<footer id="contacto"><div class="shell footer-inner"><p>© 2026 Nexo Tech · Eventos tecnológicos</p><a href="mailto:hola@nexotech.example">Escríbenos ↗</a></div></footer>
+	<footer id="contacto"><div class="shell footer-inner"><p>© 2026 Nexo Tech · Eventos tecnológicos</p><div class="footer-links"><a href="#participa">Newsletter</a><a href="mailto:hola@nexotech.example">Escríbenos ↗</a></div></div></footer>
+	<div class="modal" id="event-modal" hidden><div class="modal-backdrop" data-close-modal></div><section class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title"><button class="modal-close" type="button" data-close-modal aria-label="Cerrar detalles">×</button><div class="kicker">Nexo Tech · Detalles</div><h2 id="modal-title"></h2><p id="modal-copy"></p><a class="modal-action" href="#participa" data-close-modal>Avísame cuando abra ↗</a></section></div>
+	<script src="js/app.js" defer></script>
 </body>
 </html>

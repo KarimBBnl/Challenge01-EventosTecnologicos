@@ -67,6 +67,8 @@ resource "terraform_data" "site_content" {
     command = <<-POWERSHELL
       $ErrorActionPreference = "Stop"
       aws s3 cp "${path.module}/index.html" "s3://${local.bucket_name}/index.html" --content-type "text/html; charset=utf-8"
+      aws s3 cp "${path.module}/css" "s3://${local.bucket_name}/css" --recursive
+      aws s3 cp "${path.module}/js" "s3://${local.bucket_name}/js" --recursive
     POWERSHELL
   }
 }
